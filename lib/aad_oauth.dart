@@ -6,6 +6,8 @@ import 'package:aad_oauth/helper/core_oauth.dart';
 import 'model/config.dart';
 import 'dart:async';
 
+export 'model/exception.dart';
+
 /// Authenticates a user with Azure Active Directory using OAuth2.0.
 class AadOAuth {
   final CoreOAuth _coreOAuth;

@@ -84,7 +84,10 @@ class MobileOAuth extends CoreOAuth {
   Future<Token> _performFullAuthFlow() async {
     var code = await _requestCode.requestCode();
     if (code == null) {
-      throw Exception('Access denied or authentication canceled.');
+      throw Exception('Access denied.');
+    }
+    if (code == 'closed') {
+      throw Exception('Authentication canceled.');
     }
     return await _requestToken.requestToken(code);
   }

@@ -35,7 +35,10 @@ class RequestCode {
                     children: [
                       IconButton(
                           padding: EdgeInsets.all(0),
-                          onPressed: () => Navigator.of(context).pop(),
+                          onPressed: () {
+                            _code = 'closed';
+                            _config.navigatorKey.currentState!.pop();
+                          },
                           icon: Icon(Icons.close, color: Colors.black)),
                     ],
                   ),

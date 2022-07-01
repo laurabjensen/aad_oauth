@@ -36,7 +36,7 @@ class RequestCode {
                       IconButton(
                           padding: EdgeInsets.all(0),
                           onPressed: () {
-                            _code = 'closed';
+                            _code = 'cancelled';
                             _config.navigatorKey.currentState!.pop();
                           },
                           icon: Icon(Icons.close, color: Colors.black)),

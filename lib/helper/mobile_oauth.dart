@@ -1,5 +1,6 @@
 import 'package:aad_oauth/helper/core_oauth.dart';
 import 'package:aad_oauth/model/config.dart';
+import 'package:aad_oauth/model/exception.dart';
 import 'package:aad_oauth/model/token.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -84,10 +85,11 @@ class MobileOAuth extends CoreOAuth {
   Future<Token> _performFullAuthFlow() async {
     var code = await _requestCode.requestCode();
     if (code == null) {
-      throw Exception('Access denied.');
+      throw AadOauthException(message: 'Access denied.', code: 'ACCESS_DENIED');
     }
-    if (code == 'closed') {
-      throw Exception('Authentication canceled.');
+    if (code == 'cancelled') {
+      throw AadOauthException(
+          message: 'Authentication canceled.', code: 'AUTHENTICATION_CANCELED');
     }
     return await _requestToken.requestToken(code);
   }

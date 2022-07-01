@@ -24,7 +24,24 @@ class RequestCode {
     );
     await _config.navigatorKey.currentState!.push(MaterialPageRoute(
         builder: (context) => Scaffold(
-              body: SafeArea(child: webView),
+              backgroundColor: Colors.white,
+              body: SafeArea(
+                  child: Column(children: [
+                SizedBox(
+                  height: 20,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      IconButton(
+                          padding: EdgeInsets.all(0),
+                          onPressed: () => Navigator.of(context).pop(),
+                          icon: Icon(Icons.close, color: Colors.black)),
+                    ],
+                  ),
+                ),
+                Expanded(child: webView)
+              ])),
             )));
     return _code;
   }

@@ -1,3 +1,5 @@
+library aad_oauth_exception;
+
 class AadOauthException implements Exception {
   final String message;
   final String code;
